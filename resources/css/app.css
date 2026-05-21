@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +7,155 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-serif: 'Cinzel', serif;
+    --font-serif-display: 'Playfair Display', serif;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+        
+    --color-forest-950: #040c06;
+    --color-forest-900: #08160b;
+    --color-forest-800: #0e2413;
+    --color-forest-750: #14321b;
+    --color-forest-700: #183e21;
+    --color-forest-600: #22582f;
+    --color-forest-500: #2c723d;
+    
+    --color-moss-950: #030604;
+    --color-moss-900: #050a06;
+    --color-moss-800: #0b150d;
+    
+    --color-earth-950: #0b0806;
+    --color-earth-900: #140f0c;
+    --color-earth-800: #251c16;
+    
+    --color-gold-500: #d4a359;
+    --color-gold-400: #e2b978;
+    --color-gold-300: #ebcc97;
+    --color-gold-200: #f4deb6;
+    --color-gold-100: #fbf0d5;
+    
+    --animate-float: float 8s ease-in-out infinite;
+    --animate-fade-in-up: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    --animate-scroll-indicator: scroll-indicator 2s ease-in-out infinite;
+    --animate-mist-scroll: mist-scroll 45s linear infinite;
+    
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-10px) rotate(0.5deg);
+        }
+    }
+    
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scroll-indicator {
+        0% {
+            opacity: 0.2;
+            transform: translateY(0);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(8px);
+        }
+        100% {
+            opacity: 0.2;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes mist-scroll {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 100% 0;
+        }
+    }
+}
+
+/* Warm nature sunray overlay */
+.sunray-overlay {
+    background: radial-gradient(circle at 50% -20%, rgba(212, 163, 89, 0.16) 0%, rgba(44, 114, 61, 0.05) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+/* Mist Overlay using a subtle SVG data url pattern */
+.mist-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='300' viewBox='0 0 1000 300'%3E%3Cpath d='M0,150 Q125,120 250,150 T500,150 T750,150 T1000,150' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='40'/%3E%3Cpath d='M0,180 Q150,140 300,180 T600,180 T900,180 T1200,180' fill='none' stroke='rgba(255,255,255,0.015)' stroke-width='60'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 1000px 300px;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+/* Glassmorphism Redesigned: warm tinting and visual depth */
+.glass-panel {
+    background: rgba(5, 10, 6, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(212, 163, 89, 0.08);
+}
+
+.glass-panel-light {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+    background: linear-gradient(135deg, rgba(8, 22, 11, 0.7) 0%, rgba(5, 10, 6, 0.5) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 163, 89, 0.06);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(212, 163, 89, 0.22);
+    background: linear-gradient(135deg, rgba(20, 50, 27, 0.8) 0%, rgba(8, 22, 11, 0.6) 100%);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.85), 0 0 60px -10px rgba(212, 163, 89, 0.05);
+}
+
+/* Coordinates style tag */
+.coords-tag {
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(226, 185, 120, 0.7);
+    border: 1px solid rgba(226, 185, 120, 0.15);
+    background: rgba(8, 22, 11, 0.4);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #030604;
+}
+::-webkit-scrollbar-thumb {
+    background: #0e2413;
+    border-radius: 5px;
+    border: 2px solid #030604;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #22582f;
+}
+
+html {
+    scroll-behavior: smooth;
 }
