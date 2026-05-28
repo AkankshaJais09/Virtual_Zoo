@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -44,6 +45,19 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
         ];
+    }
+
+    public function favourites() {
+        return $this->hasMany(Favourite::class);
+    }
+
+    public function hasFavourited($animalId) {
+        return $this->favourites()->where('animal_id', $animalId)->exists();
+    }
+
+    public function activities() {
+        return $this->hasMany(Activity::class);
     }
 }
